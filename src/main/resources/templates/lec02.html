@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Lec02</title>
+</head>
+
+<body>
+  <h1>Lec02 GET!</h1>
+
+  Hi [[${namae}]]
+
+  <div>
+    <a href="/lec02/gu">ぐー</a>
+  </div>
+
+  <div>
+    <a href="/lec02/pa">ぱー</a>
+
+  </div>
+
+  <div>
+    <a href="/lec02/choki">ちょき</a>
+
+  </div>
+
+  <div th:if="${player}">
+    あなたの手 [[${player}]]
+    相手の手 Gu
+    結果 [[${judge}]]
+  </div>
+
+
+</body>
+
+</html>
