@@ -44,14 +44,14 @@ public class lec02Controller{
 
 
 
-  @PostMapping("/janken/{param2}")
+  @PostMapping("/lec02/{param2}")
   public String janken(@RequestParam String param2, ModelMap model) {
     String namae = param2;
     model.addAttribute("namae", namae);
     return "lec02.html";
   }
 
-  @PostMapping("/janken")
+  @PostMapping("/lec02")
   public String janken21(@RequestParam String namae, ModelMap model) {
     model.addAttribute("namae", namae);
     return "lec02.html";

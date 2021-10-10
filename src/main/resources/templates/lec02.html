@@ -9,7 +9,9 @@
 <body>
   <h1>Lec02 GET!</h1>
 
-  Hi [[${namae}]]
+  <div th:if="${namae}">
+    Hi [[${namae}]]
+  </div>
 
   <div>
     <a href="/lec02/gu">ぐー</a>
