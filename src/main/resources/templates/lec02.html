@@ -12,33 +12,57 @@
 
 
   エントリー
-  <ul>
+  <!--<ul>
     <li th:each="user : ${room.users}">[[${user}]]</li>
-  </ul>
+  </ul>-->
 
   <div th:if="${namae}">
     Hi [[${namae}]]
   </div>
 
-  <div>
-    <a href="/janken/gu">ぐー</a>
+  名前を入力
+  <a href="/lec02/user">user</a>
+  <p th:if="${users4}">
+  <div th:each="user,stat:${users4}">
+    <tr>
+      <td>ID:[[${user.id}]]</td>
+      <td>NAME:[[${user.name}]]</td>
+    </tr>
   </div>
+  </p>
 
-  <div>
-    <a href="/janken/pa">ぱー</a>
 
-  </div>
 
-  <div>
-    <a href="/janken/choki">ちょき</a>
+  試合結果
+  <a href="/lec02/match">match<a />
+    <p th:if="${match4}">
+      <div th:each="match,stat:${match4}">
+        <tr>
+          <td>ID:[[${match.id}]]</td>
 
-  </div>
+        </tr>
+      </div>
+    </p>
 
-  <div th:if="${player}">
-    あなたの手 [[${player}]]
-    相手の手 Gu
-    結果 [[${judge}]]
-  </div>
+    <div th:if="${namae}">
+      <a href="/janken/gu">ぐー</a>
+    </div>
+
+    <div th:if="${namae}">
+      <a href="/janken/pa">ぱー</a>
+
+    </div>
+
+    <div th:if="${namae}">
+      <a href="/janken/choki">ちょき</a>
+
+    </div>
+
+    <div th:if="${player}">
+      あなたの手 [[${player}]]
+      相手の手 Gu
+      結果 [[${judge}]]
+    </div>
 
 
 </body>

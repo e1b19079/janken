@@ -1,26 +1,36 @@
-package oit.is.z0119.kaizi.model;
+package oit.is.z0119.kaizi.janken.model;
 
-public class janken{
+public class janken {
 
   String player;
   String namae;
-  public janken(String p){
+  String judge;
+
+  public janken(String p) {
     player = p;
   }
 
-  public String getp(){
+  public String getplayer() {
     return player;
   }
 
-  public void setp(){
+  public void setplayer(String player) {
     this.player = player;
   }
 
-  public String getn(){
+  public String getnamae() {
     return namae;
   }
 
-  public void setn(){
+  public void setnamae(String namae) {
     this.namae = namae;
+  }
+
+  public String getjudge() {
+    return judge;
+  }
+
+  public void setjudge(String judge) {
+    this.judge = judge;
   }
 }
