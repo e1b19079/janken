@@ -12,4 +12,7 @@ public interface MatchMapper {
 
   @Select("SELECT * FROM MATCHES")
   ArrayList<Match> selectAll();
+
+  @Select("SELECT * FROM MATCHES WHERE USER1 = #{id}")
+  ArrayList<Match> selectById(int id);
 }
