@@ -10,27 +10,27 @@ public class janken {
     player = p;
   }
 
-  public String getplayer() {
+  public String getPlayer() {
     return player;
   }
 
-  public void setplayer(String player) {
+  public void setPlayer(String player) {
     this.player = player;
   }
 
-  public String getnamae() {
+  public String getNamae() {
     return namae;
   }
 
-  public void setnamae(String namae) {
+  public void setNamae(String namae) {
     this.namae = namae;
   }
 
-  public String getjudge() {
+  public String getJudge() {
     return judge;
   }
 
-  public void setjudge(String judge) {
+  public void setJudge(String judge) {
     this.judge = judge;
   }
 }

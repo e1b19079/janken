@@ -20,7 +20,7 @@ import oit.is.z0119.kaizi.janken.model.MatchMapper;
 import oit.is.z0119.kaizi.janken.model.Match;
 
 @Controller
-@RequestMapping("/lec02")
+@RequestMapping({ "/lec02", "/match" })
 public class lec02Controller {
 
   @Autowired
@@ -40,6 +40,12 @@ public class lec02Controller {
     String namae = prin.getName();
     model.addAttribute("namae", namae);
 
+    ArrayList<User> users4 = userMapper.selectAll();
+    model.addAttribute("users4", users4);
+
+    ArrayList<Match> match4 = matchMapper.selectAll();
+    model.addAttribute("match4", match4);
+
     return "lec02.html";
   }
 
@@ -58,33 +64,15 @@ public class lec02Controller {
     return "lec02.html";
   }
 
-  /*
-   * @PostMapping("/lec02") public String janken21(@RequestParam String namae,
-   * ModelMap model) { model.addAttribute("namae", namae); return "lec02.html"; }
-   */
+  // @RequestParam Integer id,
 
-  /*
-   * @GetMapping("/lec02/") public String sample32(ModelMap model, Principal prin)
-   * { String loginUser = prin.getName(); this.room.addUser(loginUser);
-   * model.addAttribute("room", this.room); return "lec02.html"; }
-   */
+  @GetMapping("/match")
+  public String match(@RequestParam Integer id, ModelMap model) {
 
-  @GetMapping("user")
-  public String User(ModelMap model) {
+    ArrayList<Match> match42 = matchMapper.selectById(id);
+    model.addAttribute("match42", match42);
 
-    ArrayList<User> users4 = userMapper.selectAll();
-    model.addAttribute("users4", users4);
-
-    return "lec02.html";
-  }
-
-  @GetMapping("match")
-  public String Match(ModelMap model) {
-
-    ArrayList<Match> match4 = matchMapper.selectAll();
-    model.addAttribute("match4", match4);
-
-    return "lec02.html";
+    return "match.html";
   }
 
 }
