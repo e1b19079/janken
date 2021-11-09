@@ -32,6 +32,9 @@ public class lec02Controller {
   @Autowired
   MatchMapper matchMapper;
 
+  @Autowired
+  User user1;
+
   @GetMapping("start")
   public String start(ModelMap model, Principal prin) {
     String loginUser = prin.getName();
@@ -39,6 +42,8 @@ public class lec02Controller {
     model.addAttribute("room", this.room);
     String namae = prin.getName();
     model.addAttribute("namae", namae);
+
+    user1 = userMapper.selectByName(namae);
 
     ArrayList<User> users4 = userMapper.selectAll();
     model.addAttribute("users4", users4);
@@ -69,8 +74,8 @@ public class lec02Controller {
   @GetMapping("/match")
   public String match(@RequestParam Integer id, ModelMap model) {
 
-    ArrayList<Match> match42 = matchMapper.selectById(id);
-    model.addAttribute("match42", match42);
+    User user2 = userMapper.selectById(id);
+    model.addAttribute("user2", user2);
 
     return "match.html";
   }
