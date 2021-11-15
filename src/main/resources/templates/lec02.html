@@ -21,51 +21,54 @@
   </div>
 
   名前を入力
-  <a href="/lec02/user">user</a>
-  <p th:if="${users4}">
-  <div th:each="user,stat:${users4}">
-    <tr>
-      <td>ID:[[${user.id}]]</td>
-      <td>NAME:[[${user.name}]]</td>
-    </tr>
-  </div>
-  </p>
 
-
-
-  試合結果
-  <a href="/lec02/match">match<a />
-    <p th:if="${match4}">
-      <div th:each="match,stat:${match4}">
-        <tr>
-          <td>ID:[[${match.id}]]</td>
-          <td>user1:[[${match.user1}]]</td>
-          <td>user2:[[${match.user2}]]</td>
-          <td>user1Hand:[[${match.user1Hand}]]</td>
-          <td>user2Hand:[[${match.user2Hand}]]</td>
-        </tr>
-      </div>
+  <div th:if="${users4}">
+    <p th:if="${users4}">
+    <div th:each="user,stat:${users4}">
+      <tr>
+        <td>ID:[[${user.id}]]</td>
+        <td>
+        <td>NAME:<a th:href="@{/match(id=${user.id})}"> [[${user.name}]]</a></td>
+      </tr>
+    </div>
     </p>
 
-    <div th:if="${namae}">
-      <a href="/janken/gu">ぐー</a>
+
+
+    試合結果
+
+    <p th:if="${match4}">
+    <div th:each="match,stat:${match4}">
+      <tr>
+        <td>ID:[[${match.id}]]</td>
+        <td>user1:[[${match.user1}]]</td>
+        <td>user2:[[${match.user2}]]</td>
+        <td>user1Hand:[[${match.user1Hand}]]</td>
+        <td>user2Hand:[[${match.user2Hand}]]</td>
+      </tr>
     </div>
+    </p>
+  </div>
 
-    <div th:if="${namae}">
-      <a href="/janken/pa">ぱー</a>
+  <div th:if="${namae}">
+    <a href="/janken/gu">ぐー</a>
+  </div>
 
-    </div>
+  <div th:if="${namae}">
+    <a href="/janken/pa">ぱー</a>
 
-    <div th:if="${namae}">
-      <a href="/janken/choki">ちょき</a>
+  </div>
 
-    </div>
+  <div th:if="${namae}">
+    <a href="/janken/choki">ちょき</a>
 
-    <div th:if="${player}">
-      あなたの手 [[${player}]]
-      相手の手 Gu
-      結果 [[${judge}]]
-    </div>
+  </div>
+
+  <div th:if="${player}">
+    あなたの手 [[${player}]]
+    相手の手 Gu
+    結果 [[${judge}]]
+  </div>
 
 
 </body>

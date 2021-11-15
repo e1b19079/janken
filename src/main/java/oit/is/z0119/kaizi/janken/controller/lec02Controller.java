@@ -19,12 +19,19 @@ import oit.is.z0119.kaizi.janken.model.User;
 import oit.is.z0119.kaizi.janken.model.MatchMapper;
 import oit.is.z0119.kaizi.janken.model.Match;
 
+//@RequestMapping({ "/lec02", "/match" })
 @Controller
-@RequestMapping("/lec02")
+@RequestMapping({ "/lec02", "/match" })
 public class lec02Controller {
 
   @Autowired
   private Entry room;
+
+  // @Autowired
+  // User user1;
+
+  // @Autowired
+  // User user2;
 
   @Autowired
   UserMapper userMapper;
@@ -39,6 +46,15 @@ public class lec02Controller {
     model.addAttribute("room", this.room);
     String namae = prin.getName();
     model.addAttribute("namae", namae);
+
+    // user1 = userMapper.selectByName(namae);
+    // model.addAttribute("user1", user1);
+
+    ArrayList<User> users4 = userMapper.selectAll();
+    model.addAttribute("users4", users4);
+
+    ArrayList<Match> match4 = matchMapper.selectAll();
+    model.addAttribute("match4", match4);
 
     return "lec02.html";
   }
@@ -58,33 +74,15 @@ public class lec02Controller {
     return "lec02.html";
   }
 
-  /*
-   * @PostMapping("/lec02") public String janken21(@RequestParam String namae,
-   * ModelMap model) { model.addAttribute("namae", namae); return "lec02.html"; }
-   */
+  @GetMapping("/match")
+  public String Match(@RequestParam Integer id, ModelMap model) {
 
-  /*
-   * @GetMapping("/lec02/") public String sample32(ModelMap model, Principal prin)
-   * { String loginUser = prin.getName(); this.room.addUser(loginUser);
-   * model.addAttribute("room", this.room); return "lec02.html"; }
-   */
+    User user1 = userMapper.selectById(id);
+    User user2 = userMapper.selectById(id);
+    model.addAttribute("user1", user1);
+    model.addAttribute("user2", user2);
 
-  @GetMapping("user")
-  public String User(ModelMap model) {
-
-    ArrayList<User> users4 = userMapper.selectAll();
-    model.addAttribute("users4", users4);
-
-    return "lec02.html";
-  }
-
-  @GetMapping("match")
-  public String Match(ModelMap model) {
-
-    ArrayList<Match> match4 = matchMapper.selectAll();
-    model.addAttribute("match4", match4);
-
-    return "lec02.html";
+    return "match.html";
   }
 
 }
