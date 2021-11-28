@@ -21,7 +21,6 @@ import oit.is.z0119.kaizi.janken.model.Match;
 
 //@RequestMapping({ "/lec02", "/match" })
 @Controller
-@RequestMapping({ "/lec02", "/match" })
 public class lec02Controller {
 
   @Autowired
@@ -30,16 +29,13 @@ public class lec02Controller {
   // @Autowired
   // User user1;
 
-  // @Autowired
-  // User user2;
-
   @Autowired
   UserMapper userMapper;
 
   @Autowired
   MatchMapper matchMapper;
 
-  @GetMapping("start")
+  @GetMapping("/lec02")
   public String start(ModelMap model, Principal prin) {
     String loginUser = prin.getName();
     this.room.addUser(loginUser);
@@ -47,8 +43,8 @@ public class lec02Controller {
     String namae = prin.getName();
     model.addAttribute("namae", namae);
 
-    // user1 = userMapper.selectByName(namae);
-    // model.addAttribute("user1", user1);
+    // User user3 = userMapper.selectByName(loginUser);
+    // user1.serUser(user3.getId());
 
     ArrayList<User> users4 = userMapper.selectAll();
     model.addAttribute("users4", users4);
@@ -75,9 +71,10 @@ public class lec02Controller {
   }
 
   @GetMapping("/match")
-  public String Match(@RequestParam Integer id, ModelMap model) {
+  public String Match(@RequestParam Integer id, ModelMap model, Principal prin) {
 
-    User user1 = userMapper.selectById(id);
+    String name = prin.getName();
+    User user1 = userMapper.selectByName(name);
     User user2 = userMapper.selectById(id);
     model.addAttribute("user1", user1);
     model.addAttribute("user2", user2);

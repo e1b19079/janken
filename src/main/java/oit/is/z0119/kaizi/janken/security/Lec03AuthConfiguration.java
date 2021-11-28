@@ -49,9 +49,8 @@ public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
     // antMatchers().authenticated がantMatchersへのアクセスに認証を行うことを示す
     // antMatchers()の他にanyRequest()と書くとあらゆるアクセス先を表現できる
     // authenticated()の代わりにpermitAll()と書くと認証処理が不要であることを示す
-    http.authorizeRequests().antMatchers("/lec02/**").authenticated();
-    http.authorizeRequests().antMatchers("/janken/**").authenticated();
     http.authorizeRequests().antMatchers("/match/**").authenticated();
+    http.authorizeRequests().antMatchers("/lec02/**").authenticated();
 
     http.logout().logoutSuccessUrl("/");
 
