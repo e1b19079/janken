@@ -47,8 +47,8 @@ public class Match {
     return user2Hand;
   }
 
-  public void serUser2Hand(String user2hand2) {
-    this.user2Hand = user2hand2;
+  public void setUser2Hand(String user2Hand2) {
+    this.user2Hand = user2Hand2;
   }
 
   public int getId() {

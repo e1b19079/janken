@@ -27,7 +27,7 @@ public class lec02Controller {
   private Entry room;
 
   // @Autowired
-  // User user1;
+  // Match match;
 
   @Autowired
   UserMapper userMapper;
@@ -43,9 +43,6 @@ public class lec02Controller {
     String namae = prin.getName();
     model.addAttribute("namae", namae);
 
-    // User user3 = userMapper.selectByName(loginUser);
-    // user1.serUser(user3.getId());
-
     ArrayList<User> users4 = userMapper.selectAll();
     model.addAttribute("users4", users4);
 
@@ -55,9 +52,9 @@ public class lec02Controller {
     return "lec02.html";
   }
 
-  @GetMapping("/janken/{param1}")
-  public String janken(@PathVariable String player, ModelMap model) {
-    // String player = param1;
+  @GetMapping("/match/{param1}")
+  public String janken(@PathVariable String param1, ModelMap model, Principal prin) {
+    String player = param1;
     model.addAttribute("player", player);
     if (player.equals("pa")) {
       model.addAttribute("judge", "YOUWIN!");
@@ -67,7 +64,22 @@ public class lec02Controller {
       model.addAttribute("judge", "Draw");
     }
 
-    return "lec02.html";
+    String name = prin.getName();
+    User user1 = userMapper.selectByName(name);
+    model.addAttribute("user1", user1);
+
+    User user2 = userMapper.selectById(1);
+    model.addAttribute("user2", user2);
+
+    Match match = new Match();
+    match.setUser1(user1.getId());
+    match.setUser2(user2.getId());
+    match.setUser1Hand(player);
+    match.setUser2Hand("gu");
+
+    matchMapper.insertMatches(match);
+
+    return "match.html";
   }
 
   @GetMapping("/match")
@@ -78,6 +90,10 @@ public class lec02Controller {
     User user2 = userMapper.selectById(id);
     model.addAttribute("user1", user1);
     model.addAttribute("user2", user2);
+
+    Match match = new Match();
+    match.setUser1(user1.getId());
+    match.setUser2(user2.getId());
 
     return "match.html";
   }

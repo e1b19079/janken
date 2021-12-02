@@ -4,9 +4,22 @@
 <head></head>
 
 <body>
-  <a href="/logout">ログアウト</a>
+  <a href="/lec02">もどる</a>
   <h1>Match GET!</h1>
-  <p>[[${user1.name}]] VS [[${user2.name}]]</p>
+  <div th:if="${user1.name}">
+    <p>[[${user1.name}]] VS [[${user2.name}]]</p>
+  </div>
+
+  <a href="/match/gu">ぐー</a>
+  <a href="/match/pa">ぱー</a>
+  <a href="/match/choki">ちょき</a>
+
+
+  <div th:if="${player}">
+    あなたの手 [[${player}]]
+    相手の手 Gu
+    結果 [[${judge}]]
+  </div>
 </body>
 
 </html>
